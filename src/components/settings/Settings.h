@@ -34,11 +34,15 @@ namespace Pinetime {
         Navy,
         Magenta,
         Purple,
-        Orange
+        Orange,
+        AkiViolet,
+        Mint,
+        DarkPurple,
+        DarkMint
       };
       struct PineTimeStyle {
-        Colors ColorTime = Colors::Teal;
-        Colors ColorBar = Colors::Teal;
+        Colors ColorTime = Colors::AkiViolet;
+        Colors ColorBar = Colors::Mint;
         Colors ColorBG = Colors::Black;
       };
 
