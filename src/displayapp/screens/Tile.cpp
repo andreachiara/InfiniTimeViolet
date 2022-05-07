@@ -125,6 +125,8 @@ Tile::~Tile() {
 void Tile::UpdateScreen() {
   lv_label_set_text(label_time, dateTimeController.FormattedTime().c_str());
   batteryIcon.SetBatteryPercentage(batteryController.PercentRemaining());
+  lv_obj_set_style_local_bg_color(batteryIcon, LV_BTNMATRIX_PART_BTN, LV_STATE_DEFAULT, batteryController.PercentRemaining() >= 15 ? LV_COLOR_GREEN : LV_COLOR_RED);
+
 }
 
 void Tile::OnValueChangedEvent(lv_obj_t* obj, uint32_t buttonId) {
