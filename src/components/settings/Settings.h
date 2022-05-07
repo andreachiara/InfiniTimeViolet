@@ -38,7 +38,9 @@ namespace Pinetime {
         AkiViolet,
         Mint,
         DarkPurple,
-        DarkMint
+        DarkMint,
+
+        NUMCOLORS
       };
       struct PineTimeStyle {
         Colors ColorTime = Colors::AkiViolet;

@@ -529,15 +529,15 @@ void WatchFacePineTimeStyle::UpdateSelected(lv_obj_t* object, lv_event_t event) 
       lv_obj_set_style_local_bg_color(timebar, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, Convert(valueBG));
     }
     if (object == btnReset) {
-      needle_colors[0] = LV_COLOR_WHITE;//GetPTSColorBar
-      //settingsController.SetPTSColorTime(Controllers::Settings::Colors::Teal);
-      lv_obj_set_style_local_text_color(timeDD1, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Convert(settingsController.GetPTSColorTime()));
-      lv_obj_set_style_local_text_color(timeDD2, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Convert(settingsController.GetPTSColorTime()));
-      lv_obj_set_style_local_text_color(timeAMPM, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Convert(settingsController.GetPTSColorTime()));
-      //settingsController.SetPTSColorBar(Controllers::Settings::Colors::Teal);
-      lv_obj_set_style_local_bg_color(sidebar, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, Convert(settingsController.GetPTSColorBar()));
-      //settingsController.SetPTSColorBG(Controllers::Settings::Colors::Black);
-      lv_obj_set_style_local_bg_color(timebar, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, Convert(settingsController.GetPTSColorBG()));
+      needle_colors[0] = LV_COLOR_WHITE;
+      settingsController.SetPTSColorTime(Controllers::Settings::Colors::Teal);
+      lv_obj_set_style_local_text_color(timeDD1, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Convert(Controllers::Settings::Colors::Teal));
+      lv_obj_set_style_local_text_color(timeDD2, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Convert(Controllers::Settings::Colors::Teal));
+      lv_obj_set_style_local_text_color(timeAMPM, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Convert(Controllers::Settings::Colors::Teal));
+      settingsController.SetPTSColorBar(Controllers::Settings::Colors::Teal);
+      lv_obj_set_style_local_bg_color(sidebar, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, Convert(Controllers::Settings::Colors::Teal));
+      settingsController.SetPTSColorBG(Controllers::Settings::Colors::Black);
+      lv_obj_set_style_local_bg_color(timebar, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, Convert(Controllers::Settings::Colors::Black));
     }
     if (object == btnRandom) {
       valueTime = static_cast<Controllers::Settings::Colors>(rand() % 17);
@@ -584,11 +584,10 @@ void WatchFacePineTimeStyle::UpdateSelected(lv_obj_t* object, lv_event_t event) 
 Pinetime::Controllers::Settings::Colors WatchFacePineTimeStyle::GetNext(Pinetime::Controllers::Settings::Colors color) {
   auto colorAsInt = static_cast<uint8_t>(color);
   Pinetime::Controllers::Settings::Colors nextColor;
-  if (colorAsInt < 16) {
-    nextColor = static_cast<Controllers::Settings::Colors>(colorAsInt + 1);
-  } else {
+  nextColor = static_cast<Controllers::Settings::Colors>(colorAsInt + 1);
+  if (nextColor == Controller::Settings::Colors::NUMCOLORS) {
     nextColor = static_cast<Controllers::Settings::Colors>(0);
-  }
+  } else {}
   return nextColor;
 }
 
@@ -599,7 +598,7 @@ Pinetime::Controllers::Settings::Colors WatchFacePineTimeStyle::GetPrevious(Pine
   if (colorAsInt > 0) {
     prevColor = static_cast<Controllers::Settings::Colors>(colorAsInt - 1);
   } else {
-    prevColor = static_cast<Controllers::Settings::Colors>(16);
+    prevColor = static_cast<Controllers::Settings::Colors>(Controllers::Settings::Colors::NUMCOLORS-1);
   }
   return prevColor;
 }
