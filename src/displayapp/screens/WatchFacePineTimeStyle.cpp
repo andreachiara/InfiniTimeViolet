@@ -599,5 +599,6 @@ Pinetime::Controllers::Settings::Colors WatchFacePineTimeStyle::GetPrevious(Pine
     prevColor = static_cast<Controllers::Settings::Colors>(colorAsInt - 1);
   } else {
     prevColor = GetPrevious(Controllers::Settings::Colors::NUMCOLORS;
+  }
   return prevColor;
 }
