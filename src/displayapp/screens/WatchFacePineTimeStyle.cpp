@@ -585,7 +585,7 @@ Pinetime::Controllers::Settings::Colors WatchFacePineTimeStyle::GetNext(Pinetime
   auto colorAsInt = static_cast<uint8_t>(color);
   Pinetime::Controllers::Settings::Colors nextColor;
   nextColor = static_cast<Controllers::Settings::Colors>(colorAsInt + 1);
-  if (nextColor == Controller::Settings::Colors::NUMCOLORS) {
+  if (nextColor == Controllers::Settings::Colors::NUMCOLORS) {
     nextColor = static_cast<Controllers::Settings::Colors>(0);
   } else {}
   return nextColor;
